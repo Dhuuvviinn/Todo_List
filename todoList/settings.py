@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#6q7u_r$!!%^91bh#s^j9jxwx36coxt3*2$(_16)b*$7z1og_d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['todo-list-stj7.vercel.app.vercel.app']
+ALLOWED_HOSTS = ['todo-list-stj7.vercel.app']
 
 TEMPLATES_DIRS = os.path.join(BASE_DIR,"Templates")
 # Application definition
