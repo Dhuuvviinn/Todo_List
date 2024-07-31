@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="index_main">
+
+    <div class="index-form"> 
+        <form method="post" action="/add-form/">
+            <h1 class="text-bg-dark mb-5">ADDTODO</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button>ADD</button>
+            {% if error %}
+            <p>{{form.error_messages}}</p>
+            {% endif %}
+        </form>
+    </div>
+
+   
+    <div class="todo_flex">
+        <table class="table">
+           <thead>
+            <tr>
+                <th>#</th>
+                <th>title</th>
+                <th>status</th>
+                <th>priority</th>
+                <th>🗑️</th>
+            </tr>
+           </thead> 
+
+           <tbody>
+            {% for todo_item in todos %}
+            <tr >
+                <td >{{forloop.counter}}</td>
+                <td >{{todo_item.title}}</td>
+                <td>{{todo_item.status}}</td>
+                <td>{{todo_item.priority}}</td>
+                <td>
+                <a href="delet-todo/{{todo_item.id}}" title="delete" class="btn btn-danger">delete</a>
+                    {% if todo_item.status == "C" %}
+                        <a href="change-status/{{todo_item.id}}/P">🕛</a>
+                    {% else %}
+                        <a href="change-status/{{todo_item.id}}/C">✅</a>
+                    {% endif %}
+            </td>
+            </tr>
+    {% endfor %}
+
+           </tbody>
+        </table>
+     
+    </div>
+</div>
+
+{% endblock %}
